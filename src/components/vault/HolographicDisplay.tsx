@@ -12,10 +12,10 @@ interface HolographicDisplayProps {
 
 export function HolographicDisplay({ module }: HolographicDisplayProps) {
     return (
-        <div className="relative w-full h-full bg-vault-dark overflow-hidden flex flex-col p-8">
-            {/* Background Grid & Scanlines */}
-            <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
-            <div className="scanlines"></div>
+        <div className="relative w-full h-full bg-vault-dark overflow-y-auto overflow-x-hidden flex flex-col p-4 md:p-8 custom-scrollbar">
+            {/* Background Grid & Scanlines (Fixed) */}
+            <div className="fixed inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+            <div className="scanlines fixed inset-0 pointer-events-none"></div>
 
             {/* Content Container */}
             <AnimatePresence mode="wait">
@@ -26,7 +26,7 @@ export function HolographicDisplay({ module }: HolographicDisplayProps) {
                         animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
                         transition={{ duration: 0.4, ease: "circOut" }}
-                        className="relative z-10 w-full max-w-4xl mx-auto border border-vault-border bg-vault-metal/50 backdrop-blur-sm p-8 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+                        className="relative z-10 w-full max-w-4xl mx-auto border border-vault-border bg-vault-metal/50 backdrop-blur-sm p-4 md:p-8 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
                     >
                         {/* Header */}
                         <div className="border-b border-vault-neon/30 pb-4 mb-6 flex items-center justify-between">

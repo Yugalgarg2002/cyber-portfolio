@@ -9,10 +9,12 @@ interface AccessPanelProps {
 
 export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
     return (
-        <div className="h-full w-full bg-vault-metal border-r border-vault-border flex flex-col p-4 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-vault-neon shadow-[0_0_10px_#00f3ff]"></div>
+        <div className="h-full w-full bg-vault-metal flex md:flex-col items-center md:items-stretch overflow-hidden">
+            {/* Top Border Glow */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-vault-neon shadow-[0_0_10px_#00f3ff] hidden md:block"></div>
 
-            <div className="mb-8">
+            {/* Header (Desktop Only) */}
+            <div className="hidden md:block p-4 mb-4">
                 <h1 className="text-2xl font-display font-bold text-vault-neon tracking-wider uppercase">
                     Tech Vault
                 </h1>
@@ -21,7 +23,8 @@ export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
                 </div>
             </div>
 
-            <div className="flex-1 space-y-4">
+            {/* Navigation buttons */}
+            <div className="flex-1 flex flex-row md:flex-col justify-around md:justify-start md:space-y-2 p-1 md:p-4 w-full">
                 {modules.map((module) => {
                     const Icon = module.icon;
                     const isActive = activeModule === module.id;
@@ -31,27 +34,28 @@ export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
                             key={module.id}
                             onClick={() => onSelect(module.id)}
                             className={clsx(
-                                "w-full group relative flex items-center p-3 transition-all duration-300 border-l-2",
+                                "group relative flex flex-col md:flex-row items-center justify-center md:justify-start p-2 transition-all duration-300",
+                                "rounded-lg md:rounded-none md:border-l-2",
                                 isActive
-                                    ? "bg-vault-neon/10 border-vault-neon"
-                                    : "bg-transparent border-transparent hover:bg-vault-text-dim/5 hover:border-vault-text-dim"
+                                    ? "bg-vault-neon/10 md:border-vault-neon text-vault-neon"
+                                    : "bg-transparent border-transparent text-vault-text-secondary hover:text-vault-text-primary md:hover:bg-vault-text-dim/5 md:hover:border-vault-text-dim"
                             )}
                         >
                             <div className={clsx(
-                                "mr-3 transition-colors duration-300",
-                                isActive ? "text-vault-neon" : "text-vault-text-secondary group-hover:text-vault-text-primary"
+                                "mb-1 md:mb-0 md:mr-3 transition-transform duration-300",
+                                isActive ? "scale-110 md:scale-100" : ""
                             )}>
-                                <Icon size={20} />
+                                <Icon size={20} className="md:w-6 md:h-6" />
                             </div>
 
-                            <div className="text-left font-mono text-sm">
+                            <div className="text-center md:text-left font-mono text-[10px] md:text-sm">
                                 <div className={clsx(
                                     "font-bold uppercase tracking-wider",
                                     isActive ? "text-vault-text-primary" : "text-vault-text-secondary"
                                 )}>
                                     {module.title}
                                 </div>
-                                <div className="text-[10px] text-vault-text-dim hidden md:block">
+                                <div className="text-[9px] text-vault-text-dim hidden md:block">
                                     {module.status}
                                 </div>
                             </div>
@@ -59,7 +63,7 @@ export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
                             {isActive && (
                                 <motion.div
                                     layoutId="activeGlow"
-                                    className="absolute inset-0 bg-vault-neon/5"
+                                    className="absolute inset-0 bg-vault-neon/5 rounded-lg md:rounded-none"
                                     initial={false}
                                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                 />
@@ -69,7 +73,8 @@ export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
                 })}
             </div>
 
-            <div className="mt-auto border-t border-vault-border pt-4">
+            {/* Footer (Desktop Only) */}
+            <div className="hidden md:block mt-auto border-t border-vault-border p-4">
                 <div className="text-[10px] font-mono text-vault-text-dim text-center">
                     SECURE CONNECTION
                     <span className="block text-vault-neon animate-pulse">● ONLINE</span>

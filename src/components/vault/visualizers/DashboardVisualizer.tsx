@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { SkillRadar } from "../dashboard/SkillRadar";
+import { ActiveQuests } from "../dashboard/ActiveQuests";
+import { VaultTerminal } from "../dashboard/VaultTerminal";
 
 export function DashboardVisualizer() {
     return (
@@ -43,38 +46,19 @@ export function DashboardVisualizer() {
 
             {/* Stats & Bio Section */}
             <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
-                {/* Stats Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <StatCard label="EXP_YEARS" value="03" delay={0.1} />
-                    <StatCard label="PROJECTS" value="24" delay={0.2} />
-                    <StatCard label="CONTRIBS" value="150+" delay={0.3} />
-                    <StatCard label="UPTIME" value="99.9%" delay={0.4} />
+
+                {/* Top Row: Skills & Quests */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto md:h-64">
+                    <div className="bg-vault-panel border border-vault-border p-4 relative overflow-hidden h-64 md:h-full">
+                        <SkillRadar />
+                    </div>
+                    <div className="bg-vault-panel border border-vault-border p-4 relative overflow-hidden overflow-y-auto h-64 md:h-full">
+                        <ActiveQuests />
+                    </div>
                 </div>
 
-                {/* Bio / Log */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="flex-1 bg-vault-panel border border-vault-border p-6 relative"
-                >
-                    <div className="text-xs text-vault-text-dim mb-4 flex justify-between">
-                        <span>// BIO_LOG_ENTRY_001</span>
-                        <span>STATUS: ENCRYPTED</span>
-                    </div>
-                    <p className="text-vault-text-secondary leading-relaxed text-sm">
-                        Passionate developer specializing in building agentic AI workflows and futuristic interfaces.
-                        Currently architecting high-performance web applications using the latest protocols (MCP).
-                        Obsessed with clean code, modular architecture, and cyber-aesthetic design systems.
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                        <Tag>React</Tag>
-                        <Tag>Node.js</Tag>
-                        <Tag>TypeScript</Tag>
-                        <Tag>Vite</Tag>
-                        <Tag>Tailwind</Tag>
-                    </div>
-                </motion.div>
+                {/* Bottom Row: Terminal */}
+                <VaultTerminal />
             </div>
         </div>
     );
@@ -86,27 +70,5 @@ function SocialLink({ icon: Icon, label, href }: { icon: any, label: string, hre
             <span className="text-xs text-vault-text-secondary group-hover:text-vault-neon">{label}</span>
             <Icon size={14} className="text-vault-text-dim group-hover:text-vault-neon" />
         </a>
-    )
-}
-
-function StatCard({ label, value, delay }: { label: string, value: string, delay: number }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay }}
-            className="bg-vault-dark border border-vault-border p-4 flex flex-col items-center justify-center hover:border-vault-neon/50 transition-colors"
-        >
-            <div className="text-2xl font-display font-bold text-vault-text-primary mb-1">{value}</div>
-            <div className="text-[10px] text-vault-text-dim uppercase">{label}</div>
-        </motion.div>
-    )
-}
-
-function Tag({ children }: { children: React.ReactNode }) {
-    return (
-        <span className="px-2 py-1 text-[10px] border border-vault-neon/30 text-vault-neon bg-vault-neon/5 rounded-sm">
-            {children}
-        </span>
     )
 }
