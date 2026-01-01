@@ -1,12 +1,12 @@
-import { Component, Cpu, MessageSquare, Zap, LayoutDashboard } from 'lucide-react';
+import { LayoutDashboard, BookOpen, type LucideIcon } from 'lucide-react';
 
-export type ModuleId = 'dashboard' | 'mcp' | 'frontend' | 'messaging' | 'cache';
+export type ModuleId = 'dashboard' | 'blog';
 
 export interface Module {
     id: ModuleId;
     title: string;
     description: string;
-    icon: any; // Lucide icon
+    icon: LucideIcon;
     status: 'active' | 'offline' | 'maintenance' | 'locked';
 }
 
@@ -19,31 +19,11 @@ export const modules: Module[] = [
         status: 'active',
     },
     {
-        id: 'mcp',
-        title: 'MCP Core',
-        description: 'Model Context Protocol Integrations',
-        icon: Cpu,
-        status: 'active',
-    },
-    {
-        id: 'frontend',
-        title: 'Frontend UI',
-        description: 'Component Library & Visual Systems',
-        icon: Component,
-        status: 'active',
-    },
-    {
-        id: 'messaging',
-        title: 'Neural Link',
-        description: 'Messaging Patterns & Real-time Comms',
-        icon: MessageSquare,
-        status: 'active',
-    },
-    {
-        id: 'cache',
-        title: 'Memory Bank',
-        description: 'Cache Strategies & Optimization',
-        icon: Zap,
+        id: 'blog',
+        title: 'Field Logs',
+        description: 'Research Notes & Architectural Decisions',
+        icon: BookOpen,
         status: 'active',
     },
 ];
+

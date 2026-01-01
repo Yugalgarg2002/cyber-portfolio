@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
+    "eventsource": "^4.1.0",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
     "recharts": "^3.5.1",
     "simple-icons": "^16.0.0",
     "tailwind-merge": "^3.4.0",

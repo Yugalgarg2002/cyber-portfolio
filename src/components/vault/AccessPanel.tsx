@@ -30,17 +30,15 @@ export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
                     const isActive = activeModule === module.id;
 
                     return (
-                        <button
-                            key={module.id}
-                            onClick={() => onSelect(module.id)}
-                            className={clsx(
-                                "group relative flex flex-col md:flex-row items-center justify-center md:justify-start p-2 transition-all duration-300",
-                                "rounded-lg md:rounded-none md:border-l-2",
-                                isActive
-                                    ? "bg-vault-neon/10 md:border-vault-neon text-vault-neon"
-                                    : "bg-transparent border-transparent text-vault-text-secondary hover:text-vault-text-primary md:hover:bg-vault-text-dim/5 md:hover:border-vault-text-dim"
-                            )}
-                        >
+                            <button
+                                onClick={() => onSelect(module.id)}
+                                className={clsx(
+                                    "w-full flex items-center gap-3 px-4 py-3 text-sm font-mono uppercase tracking-wider transition-all duration-200 border-l-2 md:border-l-0 md:border-b-2",
+                                    isActive 
+                                        ? "bg-vault-neon/10 border-vault-neon text-vault-neon shadow-[inset_0_0_10px_rgba(0,243,255,0.1)]" 
+                                        : "border-transparent text-vault-text-secondary hover:text-vault-neon hover:bg-vault-neon/5 md:hover:border-vault-neon/50"
+                                )}
+                            >
                             <div className={clsx(
                                 "mb-1 md:mb-0 md:mr-3 transition-transform duration-300",
                                 isActive ? "scale-110 md:scale-100" : ""

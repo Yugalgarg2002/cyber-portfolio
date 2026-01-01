@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 
 const quests = [
-    { id: 1, title: "Master Next.js 15", progress: 65, status: "IN_PROGRESS" },
+    { id: 1, title: "Master Next.js 15", progress: 100, status: "IN_PROGRESS" },
     { id: 2, title: "AWS Solutions Architect", progress: 20, status: "STARTED" },
     { id: 3, title: "Advanced Agentic AI", progress: 45, status: "ANALYZING" },
+    { id: 4, title: "WebFlux Reactive Programming", progress: 0, status: "TO-DO"}
 ];
 
 export function ActiveQuests() {

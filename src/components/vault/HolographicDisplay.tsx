@@ -1,10 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Module } from '../../data/modules';
 import { DashboardVisualizer } from './visualizers/DashboardVisualizer';
-import { MCPVisualizer } from './visualizers/MCPVisualizer';
-import { FrontendVisualizer } from './visualizers/FrontendVisualizer';
-import { MessagingVisualizer } from './visualizers/MessagingVisualizer';
-import { CacheVisualizer } from './visualizers/CacheVisualizer';
+import { BlogVisualizer } from './visualizers/BlogVisualizer';
 
 interface HolographicDisplayProps {
     module: Module | null;
@@ -57,10 +54,7 @@ export function HolographicDisplay({ module }: HolographicDisplayProps) {
                                 {/* Module Visualizer */}
                                 <div className="mt-8 p-4 bg-black/20 rounded border border-vault-border/50">
                                     {module.id === 'dashboard' && <DashboardVisualizer />}
-                                    {module.id === 'mcp' && <MCPVisualizer />}
-                                    {module.id === 'frontend' && <FrontendVisualizer />}
-                                    {module.id === 'messaging' && <MessagingVisualizer />}
-                                    {module.id === 'cache' && <CacheVisualizer />}
+                                    {module.id === 'blog' && <BlogVisualizer />}
                                 </div>
                             </div>
                         </div>
@@ -84,3 +78,4 @@ export function HolographicDisplay({ module }: HolographicDisplayProps) {
         </div>
     );
 }
+

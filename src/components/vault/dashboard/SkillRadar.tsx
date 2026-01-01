@@ -8,19 +8,18 @@ import {
 } from "recharts";
 
 const data = [
-    { subject: "Frontend", A: 120, fullMark: 150 },
-    { subject: "Backend", A: 98, fullMark: 150 },
-    { subject: "DevOps", A: 50, fullMark: 150 },
-    { subject: "Design", A: 90, fullMark: 150 },
-    { subject: "System Design", A: 65, fullMark: 150 },
-    { subject: "Database", A: 85, fullMark: 150 },
+    { subject: "Frontend", A: 100, fullMark: 100 },
+    { subject: "Backend", A: 150, fullMark: 100 },
+    { subject: "DevOps", A: 120, fullMark: 100 },
+    { subject: "Design", A: 130, fullMark: 100 },
+    { subject: "Database", A: 120, fullMark: 100 },
 ];
 
 export function SkillRadar() {
     return (
         <div className="h-64 w-full relative">
             <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
+                <RadarChart cx="50%" cy="50%" outerRadius="50%" data={data}>
                     <PolarGrid stroke="#2a2a35" />
                     <PolarAngleAxis
                         dataKey="subject"
