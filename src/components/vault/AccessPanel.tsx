@@ -31,9 +31,10 @@ export function AccessPanel({ activeModule, onSelect }: AccessPanelProps) {
 
                     return (
                             <button
+                                key={module.id}
                                 onClick={() => onSelect(module.id)}
                                 className={clsx(
-                                    "w-full flex items-center gap-3 px-4 py-3 text-sm font-mono uppercase tracking-wider transition-all duration-200 border-l-2 md:border-l-0 md:border-b-2",
+                                    "relative w-full flex items-center gap-3 px-4 py-3 text-sm font-mono uppercase tracking-wider transition-all duration-200 border-l-2 md:border-l-0 md:border-b-2",
                                     isActive 
                                         ? "bg-vault-neon/10 border-vault-neon text-vault-neon shadow-[inset_0_0_10px_rgba(0,243,255,0.1)]" 
                                         : "border-transparent text-vault-text-secondary hover:text-vault-neon hover:bg-vault-neon/5 md:hover:border-vault-neon/50"
